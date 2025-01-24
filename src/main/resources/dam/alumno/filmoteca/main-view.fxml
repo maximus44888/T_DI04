@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="dam.alumno.filmoteca.MainController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
-
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import javafx.scene.control.Button?><?import javafx.scene.control.TableColumn?><?import javafx.scene.control.TableView?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.Region?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
+<HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="dam.alumno.filmoteca.MainController">
+    <VBox>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn fx:id="IDColumn" text="ID" />
+                <TableColumn fx:id="titleColumn" text="Título" />
+                <TableColumn fx:id="yearColumn" text="Año" />
+                <TableColumn fx:id="ratingColumn" text="Nota" />
+                <TableColumn fx:id="posterColumn" text="URL Poster" />
+                <TableColumn fx:id="descriptionColumn" text="Descripción" />
+            </columns>
+        </TableView>
+        <HBox>
+            <Button mnemonicParsing="false" text="Crear película" onAction="#onAddFilm"/>
+            <Button mnemonicParsing="false" text="Modificar película" onAction="#onUpdateFilm"/>
+            <Button mnemonicParsing="false" text="Eliminar película" onAction="#onRemoveFilm"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" text="Cerrar aplicación" onAction="#onClose" cancelButton="true"/>
+        </HBox>
+    </VBox>
+    <VBox>
+        <Text text="Película" />
+        <fx:include source="film-view.fxml" />
+    </VBox>
+</HBox>

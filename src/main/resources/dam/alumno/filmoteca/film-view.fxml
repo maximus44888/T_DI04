@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?><?import javafx.scene.control.Slider?><?import javafx.scene.control.TextArea?><?import javafx.scene.control.TextField?><?import javafx.scene.image.Image?><?import javafx.scene.image.ImageView?><?import javafx.scene.layout.GridPane?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
+<HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="dam.alumno.filmoteca.FilmController">
+    <VBox alignment="CENTER_LEFT">
+        <GridPane>
+            <Label text="ID" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                GridPane.columnSpan="2" />
+            <Label text="Película" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                GridPane.columnSpan="2" />
+            <Label text="Año" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                GridPane.columnSpan="2" />
+            <Label text="Nota" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Slider disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text text="0.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        </GridPane>
+        <Label text="Descripción" />
+        <TextArea disable="true" editable="false" prefWidth="NaN" VBox.vgrow="ALWAYS" />
+    </VBox>
+    <VBox>
+        <ImageView fitHeight="320" fitWidth="180" preserveRatio="true">
+            <Image url="https://m.media-amazon.com/images/I/714Mwnmg2mL._AC_UF894,1000_QL80_.jpg" />
+        </ImageView>
+        <Label text="URL Poster" />
+        <TextField disable="true" editable="false" HBox.hgrow="ALWAYS" />
+    </VBox>
+</HBox>
