@@ -24,6 +24,6 @@
     </VBox>
     <VBox>
         <Text text="Película" />
-        <fx:include source="film-view.fxml" />
+        <fx:include fx:id="filmView" source="film-view.fxml" />
     </VBox>
 </HBox>
