@@ -6,26 +6,23 @@
     <VBox alignment="CENTER_LEFT">
         <GridPane>
             <Label text="ID" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0"
-                GridPane.columnSpan="2" />
+            <TextField fx:id="IDInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Película" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                GridPane.columnSpan="2" />
+            <TextField fx:id="filmInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Año" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                GridPane.columnSpan="2" />
+            <TextField fx:id="yearInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Nota" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <Slider disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text text="0.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Slider fx:id="ratingInput" max="10.0" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="ratingOutput" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
         </GridPane>
         <Label text="Descripción" />
-        <TextArea disable="true" editable="false" prefWidth="NaN" VBox.vgrow="ALWAYS" />
+        <TextArea fx:id="descriptionInput" editable="false" prefWidth="NaN" wrapText="true" VBox.vgrow="ALWAYS" />
     </VBox>
     <VBox>
-        <ImageView fitHeight="320" fitWidth="180" preserveRatio="true">
+        <ImageView fx:id="posterOutput" fitHeight="320" fitWidth="180" preserveRatio="true">
             <Image url="https://m.media-amazon.com/images/I/714Mwnmg2mL._AC_UF894,1000_QL80_.jpg" />
         </ImageView>
         <Label text="URL Poster" />
-        <TextField disable="true" editable="false" HBox.hgrow="ALWAYS" />
+        <TextField fx:id="posterInput" editable="false" HBox.hgrow="ALWAYS" />
     </VBox>
 </HBox>

@@ -28,7 +28,7 @@ public class MainController {
     @FXML
     private HBox filmView;
     @FXML
-    private FilmController filmController;
+    private FilmController filmViewController;
 
     @FXML
     private void initialize() {
@@ -39,6 +39,8 @@ public class MainController {
         descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         ratingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty().asObject());
         posterColumn.setCellValueFactory(cellData -> cellData.getValue().posterProperty());
+
+        filmViewController.filmProperty().bind(tableView.getSelectionModel().selectedItemProperty());
     }
 
     @FXML
