@@ -50,6 +50,7 @@ public class MainController {
 
     @FXML
     private void onRemoveFilm(final ActionEvent actionEvent) {
+        tableView.getItems().remove(tableView.getSelectionModel().getSelectedItem());
     }
 
     @FXML
