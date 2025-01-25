@@ -1,6 +1,5 @@
 package dam.alumno.filmoteca;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -8,8 +7,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 
 public class MainController {
-
-    private ObservableList<Pelicula> films = DatosFilmoteca.getInstancia().getListaPeliculas();
 
     @FXML
     private TableView<Pelicula> tableView;
@@ -32,7 +29,7 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        tableView.setItems(films);
+        tableView.setItems(DatosFilmoteca.getInstancia().getListaPeliculas());
         IDColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asObject());
