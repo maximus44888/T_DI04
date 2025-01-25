@@ -38,6 +38,9 @@ public class MainController {
         posterColumn.setCellValueFactory(cellData -> cellData.getValue().posterProperty());
 
         filmViewController.filmProperty().bind(tableView.getSelectionModel().selectedItemProperty());
+        if (!tableView.getItems().isEmpty()) {
+            tableView.getSelectionModel().clearAndSelect(0);
+        }
     }
 
     @FXML
