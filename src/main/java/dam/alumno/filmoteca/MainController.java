@@ -54,5 +54,6 @@ public class MainController {
 
     @FXML
     private void onClose(final ActionEvent actionEvent) {
+        tableView.getScene().getWindow().hide();
     }
 }
