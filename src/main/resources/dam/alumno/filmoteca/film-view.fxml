@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?><?import javafx.scene.control.Slider?><?import javafx.scene.control.TextArea?><?import javafx.scene.control.TextField?><?import javafx.scene.image.Image?><?import javafx.scene.image.ImageView?><?import javafx.scene.layout.GridPane?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?><?import javafx.scene.control.Slider?><?import javafx.scene.control.TextArea?><?import javafx.scene.control.TextField?><?import javafx.scene.image.ImageView?><?import javafx.scene.layout.GridPane?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
 <HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="dam.alumno.filmoteca.FilmController">
     <VBox alignment="CENTER_LEFT">
@@ -19,9 +19,7 @@
         <TextArea fx:id="descriptionInput" editable="false" prefWidth="NaN" wrapText="true" VBox.vgrow="ALWAYS" />
     </VBox>
     <VBox>
-        <ImageView fx:id="posterOutput" fitHeight="320" fitWidth="180" preserveRatio="true">
-            <Image url="https://m.media-amazon.com/images/I/714Mwnmg2mL._AC_UF894,1000_QL80_.jpg" />
-        </ImageView>
+        <ImageView fx:id="posterOutput" fitHeight="325" fitWidth="216" />
         <Label text="URL Poster" />
         <TextField fx:id="posterInput" editable="false" HBox.hgrow="ALWAYS" />
     </VBox>
