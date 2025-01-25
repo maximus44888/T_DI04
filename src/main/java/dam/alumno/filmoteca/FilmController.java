@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -37,7 +38,7 @@ public class FilmController {
         ratingOutput.textProperty().bind(ratingInput.valueProperty().asString("%.2f"));
         posterOutput.imageProperty().bind(Bindings.createObjectBinding(() -> {
             String url = posterInput.getText();
-            return url == null || url.isEmpty() ? null : new javafx.scene.image.Image(url);
+            return url == null || url.isEmpty() ? null : new Image(url);
         }, posterInput.textProperty()));
 
         film.addListener((observable, oldValue, newValue) -> {
@@ -50,15 +51,18 @@ public class FilmController {
                 posterInput.textProperty().unbind();
             }
 
-            if (newValue != null) {
-                IDInput.textProperty().bind(newValue.idProperty().asString());
-                filmInput.textProperty().bind(newValue.titleProperty());
-                yearInput.textProperty().bind(newValue.yearProperty().asString());
-                ratingInput.valueProperty().bind(newValue.ratingProperty());
-                ratingInput.setDisable(false);
-                descriptionInput.textProperty().bind(newValue.descriptionProperty());
-                posterInput.textProperty().bind(newValue.posterProperty());
+            if (newValue == null) {
+                newValue = new Pelicula();
             }
+
+            IDInput.textProperty().bind(newValue.idProperty().asString());
+            filmInput.textProperty().bind(newValue.titleProperty());
+            yearInput.textProperty().bind(newValue.yearProperty().asString());
+            ratingInput.valueProperty().bind(newValue.ratingProperty());
+            ratingInput.setDisable(false);
+            descriptionInput.textProperty().bind(newValue.descriptionProperty());
+            posterInput.textProperty().bind(newValue.posterProperty());
+
         });
     }
 
