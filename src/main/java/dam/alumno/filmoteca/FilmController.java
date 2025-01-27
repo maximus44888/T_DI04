@@ -37,8 +37,11 @@ public class FilmController {
     private void initialize() {
         ratingOutput.textProperty().bind(ratingInput.valueProperty().asString("%.2f"));
         posterOutput.imageProperty().bind(Bindings.createObjectBinding(() -> {
-            String url = posterInput.getText();
-            return url == null || url.isBlank() ? null : new Image(url);
+            try {
+                return new Image(posterInput.getText());
+            } catch (final Exception e) {
+                return null;
+            }
         }, posterInput.textProperty()));
 
         film.addListener((observable, oldValue, newValue) -> {
