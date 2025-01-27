@@ -30,7 +30,7 @@ public class AddUpdateController {
 
     @FXML
     private void onAccept(final ActionEvent actionEvent) {
-        final var films = DatosFilmoteca.getInstancia().getListaPeliculas();
+        final var films = FilmArchive.getInstance().films;
         switch (state.get()) {
             case ADD -> films.add(film.get());
             case UPDATE -> films.filtered(p -> p.getId() == film.get().getId()).stream().findFirst().ifPresent(p -> {

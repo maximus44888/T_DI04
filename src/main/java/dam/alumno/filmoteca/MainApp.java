@@ -30,25 +30,25 @@ public class MainApp extends Application {
 
     public void init() {
         System.out.println("Cargando datos desde fichero datos/peliculas.json");
-        DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
+        FilmArchive datosFilmoteca = FilmArchive.getInstance();
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
             List<Pelicula> lista = objectMapper.readValue(new File("datos/peliculas.json"),
                                     objectMapper.getTypeFactory().constructCollectionType(List.class, Pelicula.class));
 
-            datosFilmoteca.getListaPeliculas().setAll(lista);
-        } catch (IOException e){
+            datosFilmoteca.films.setAll(lista);
+        } catch (IOException e) {
             System.out.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
             e.printStackTrace();
             System.exit(1);
         }
 
-        System.out.println(datosFilmoteca.getListaPeliculas());
+        System.out.println(datosFilmoteca.films);
     }
 
     public void stop() {
-        ObservableList<Pelicula> listaPeliculas = DatosFilmoteca.getInstancia().getListaPeliculas();
+        ObservableList<Pelicula> listaPeliculas = FilmArchive.getInstance().films;
         System.out.println(listaPeliculas);
         ObjectMapper objectMapper = new ObjectMapper();
 

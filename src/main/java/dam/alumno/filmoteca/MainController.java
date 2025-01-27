@@ -34,7 +34,7 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        tableView.setItems(DatosFilmoteca.getInstancia().getListaPeliculas());
+        tableView.setItems(FilmArchive.getInstance().films);
         IDColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asObject());
