@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?><?import javafx.scene.control.ButtonBar?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="dam.alumno.filmoteca.AddUpdateController">
+    <Text fx:id="display" />
+    <fx:include fx:id="filmView" source="film-view.fxml" />
+    <ButtonBar>
+        <buttons>
+            <Button defaultButton="true" onAction="#onAccept" text="Aceptar" />
+            <Button cancelButton="true" onAction="#onCancel" text="Cancelar" />
+        </buttons>
+    </ButtonBar>
+</VBox>
