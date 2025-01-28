@@ -3,13 +3,11 @@ package dam.alumno.filmoteca;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class AddUpdateController {
-
     private final ObjectProperty<Film> film = new SimpleObjectProperty<>(new Film());
     private final ObjectProperty<State> state = new SimpleObjectProperty<>(State.SHOW);
 
@@ -33,13 +31,14 @@ public class AddUpdateController {
         final var films = FilmArchive.getInstance().films;
         switch (state.get()) {
             case ADD -> films.add(film.get());
-            case UPDATE -> films.filtered(p -> p.id.get() == film.get().id.get()).stream().findFirst().ifPresent(p -> {
-                p.title.set(film.get().title.get());
-                p.year.set(film.get().year.get());
-                p.description.set(film.get().description.get());
-                p.rating.set(film.get().rating.get());
-                p.poster.set(film.get().poster.get());
-            });
+            case UPDATE -> films.filtered((final Film p) -> p.id.get() == film.get().id.get()).stream().findFirst()
+                    .ifPresent((final Film p) -> {
+                        p.title.set(film.get().title.get());
+                        p.year.set(film.get().year.get());
+                        p.description.set(film.get().description.get());
+                        p.rating.set(film.get().rating.get());
+                        p.poster.set(film.get().poster.get());
+                    });
         }
         display.getScene().getWindow().hide();
     }
