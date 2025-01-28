@@ -3,6 +3,8 @@ package dam.alumno.filmoteca;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -77,11 +79,27 @@ public class MainController {
 
     @FXML
     private void onRemoveFilm() {
-        tableView.getItems().remove(tableView.getSelectionModel().getSelectedItem());
+        showAlert(
+                Alert.AlertType.CONFIRMATION,
+                "¿Estás seguro de que quieres eliminar la película seleccionada?",
+                () -> tableView.getItems().remove(tableView.getSelectionModel().getSelectedItem())
+        );
     }
 
     @FXML
     private void onClose() {
-        tableView.getScene().getWindow().hide();
+        showAlert(
+                Alert.AlertType.CONFIRMATION,
+                "¿Estás seguro de que quieres salir?",
+                () -> tableView.getScene().getWindow().hide()
+        );
+    }
+
+    private void showAlert(final Alert.AlertType alertType, final String contentText, final Runnable lambda) {
+        new Alert(alertType, contentText).showAndWait().ifPresent((final ButtonType response) -> {
+            if (response == ButtonType.OK) {
+                lambda.run();
+            }
+        });
     }
 }
