@@ -1,64 +1,66 @@
 package dam.alumno.filmoteca;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainApp extends Application {
 
+    public static void main(final String[] args) {
+        launch();
+    }
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+    public void start(final Stage stage) throws IOException {
+        final var fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
+        final var scene = new Scene(fxmlLoader.load());
         stage.setTitle("Filmoteca");
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
-
     public void init() {
         System.out.println("Cargando datos desde fichero datos/peliculas.json");
-        FilmArchive datosFilmoteca = FilmArchive.getInstance();
-        ObjectMapper objectMapper = new ObjectMapper();
+        final var films = FilmArchive.getInstance().films;
+        final var objectMapper = new ObjectMapper();
 
         try {
-            List<Pelicula> lista = objectMapper.readValue(new File("datos/peliculas.json"),
-                                    objectMapper.getTypeFactory().constructCollectionType(List.class, Pelicula.class));
+            final var readFilms = objectMapper.readValue(
+                    new File("datos/peliculas.json"),
+                    new TypeReference<List<Pelicula>>() {}
+            );
 
-            datosFilmoteca.films.setAll(lista);
-        } catch (IOException e) {
+            films.setAll(readFilms);
+        } catch (final IOException e) {
             System.out.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
             e.printStackTrace();
             System.exit(1);
+            return;
         }
 
-        System.out.println(datosFilmoteca.films);
+        System.out.println(films);
     }
 
     public void stop() {
-        ObservableList<Pelicula> listaPeliculas = FilmArchive.getInstance().films;
-        System.out.println(listaPeliculas);
-        ObjectMapper objectMapper = new ObjectMapper();
+        final var films = FilmArchive.getInstance().films;
+        System.out.println(films);
+        final var objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         try {
-            objectMapper.writeValue(new File("datos/peliculas2.json"),listaPeliculas);
-        }catch (IOException e) {
+            objectMapper.writeValue(new File("datos/peliculas2.json"), films);
+        } catch (final IOException e) {
             System.out.println("ERROR no se ha podido guardar los datos de la aplicación");
             e.printStackTrace();
         }
-
     }
 }
 
