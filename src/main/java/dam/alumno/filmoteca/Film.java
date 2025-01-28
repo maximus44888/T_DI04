@@ -1,6 +1,7 @@
 package dam.alumno.filmoteca;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javafx.beans.property.FloatProperty;
@@ -57,6 +58,36 @@ public class Film {
         description = new SimpleStringProperty();
         rating = new SimpleFloatProperty();
         poster = new SimpleStringProperty();
+    }
+
+    @JsonGetter("id")
+    public int getId() {
+        return id.get();
+    }
+
+    @JsonGetter("title")
+    public String getTitle() {
+        return title.get();
+    }
+
+    @JsonGetter("year")
+    public int getYear() {
+        return year.get();
+    }
+
+    @JsonGetter("description")
+    public String getDescription() {
+        return description.get();
+    }
+
+    @JsonGetter("rating")
+    public float getRating() {
+        return rating.get();
+    }
+
+    @JsonGetter("poster")
+    public String getPoster() {
+        return poster.get();
     }
 
     @Override
