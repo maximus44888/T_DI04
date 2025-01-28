@@ -96,7 +96,7 @@ public class FilmController {
             filmInput.textProperty().bindBidirectional(next.title);
             Bindings.bindBidirectional(yearInput.textProperty(), next.year, new StringConverter<>() {
                 @Override
-                public String toString(Number number) {
+                public String toString(final Number number) {
                     return number == null ? "" : Integer.toString((Integer) number);
                 }
 
