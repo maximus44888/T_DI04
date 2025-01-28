@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class MainApp extends Application {
+    private final File src = new File("datos/peliculas.json");
+    private final File dest = new File("datos/peliculas2.json");
 
     public static void main(final String[] args) {
         launch();
@@ -27,7 +29,7 @@ public class MainApp extends Application {
         System.out.println("Cargando datos desde fichero datos/peliculas.json");
 
         try {
-            System.out.println(FilmArchive.getInstance().loadFrom(new File("datos/peliculas.json")));
+            System.out.println(FilmArchive.getInstance().loadFrom(src));
         } catch (final IOException e) {
             System.out.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
             e.printStackTrace();
@@ -40,7 +42,7 @@ public class MainApp extends Application {
         System.out.println(filmArchive.films);
 
         try {
-            filmArchive.saveTo(new File("datos/peliculas2.json"));
+            filmArchive.saveTo(dest);
         } catch (final IOException e) {
             System.out.println("ERROR no se ha podido guardar los datos de la aplicación");
             e.printStackTrace();
