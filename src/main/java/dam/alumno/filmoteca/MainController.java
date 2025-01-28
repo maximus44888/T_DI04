@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,6 +30,10 @@ public class MainController {
     private TableColumn<Film, String> posterColumn;
     @FXML
     private FilmController filmViewController;
+    @FXML
+    public Button updateFilm;
+    @FXML
+    public Button removeFilm;
 
     @FXML
     private void initialize() {
@@ -44,6 +49,9 @@ public class MainController {
         if (!tableView.getItems().isEmpty()) {
             tableView.getSelectionModel().clearAndSelect(0);
         }
+
+        updateFilm.disableProperty().bind(tableView.getSelectionModel().selectedItemProperty().isNull());
+        removeFilm.disableProperty().bind(tableView.getSelectionModel().selectedItemProperty().isNull());
     }
 
     @FXML

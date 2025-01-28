@@ -16,8 +16,8 @@
         </TableView>
         <HBox>
             <Button mnemonicParsing="false" text="Crear película" onAction="#onAddFilm"/>
-            <Button mnemonicParsing="false" text="Modificar película" onAction="#onUpdateFilm"/>
-            <Button mnemonicParsing="false" text="Eliminar película" onAction="#onRemoveFilm"/>
+            <Button fx:id="updateFilm" mnemonicParsing="false" text="Modificar película" onAction="#onUpdateFilm"/>
+            <Button fx:id="removeFilm" mnemonicParsing="false" text="Eliminar película" onAction="#onRemoveFilm"/>
             <Region HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" text="Cerrar aplicación" onAction="#onClose" cancelButton="true"/>
         </HBox>
