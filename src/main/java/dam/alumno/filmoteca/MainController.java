@@ -35,12 +35,12 @@ public class MainController {
     @FXML
     private void initialize() {
         tableView.setItems(FilmArchive.getInstance().films);
-        IDColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-        titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-        yearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asObject());
-        descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        ratingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty().asObject());
-        posterColumn.setCellValueFactory(cellData -> cellData.getValue().posterProperty());
+        IDColumn.setCellValueFactory(cellData -> cellData.getValue().id.asObject());
+        titleColumn.setCellValueFactory(cellData -> cellData.getValue().title);
+        yearColumn.setCellValueFactory(cellData -> cellData.getValue().year.asObject());
+        descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().description);
+        ratingColumn.setCellValueFactory(cellData -> cellData.getValue().rating.asObject());
+        posterColumn.setCellValueFactory(cellData -> cellData.getValue().poster);
 
         filmViewController.filmProperty().bind(tableView.getSelectionModel().selectedItemProperty());
         if (!tableView.getItems().isEmpty()) {
@@ -65,11 +65,10 @@ public class MainController {
         controller.stateProperty().set(state);
         final Film viewFilm = switch (state) {
             case ADD:
-                var nextId = tableView.getItems().stream().mapToInt(Film::getId).max().orElse(0) + 1;
-                yield new Film(nextId, "", 0, "", 0, "");
+                var nextId = tableView.getItems().stream().mapToInt(e -> e.id.get()).max().orElse(0) + 1;
+                yield new Film(nextId);
             case UPDATE:
-                var selectedFilm = tableView.getSelectionModel().getSelectedItem();
-                yield new Film(selectedFilm.getId(), selectedFilm.getTitle(), selectedFilm.getYear(), selectedFilm.getDescription(), selectedFilm.getRating(), selectedFilm.getPoster());
+                yield new Film(tableView.getSelectionModel().getSelectedItem());
             case SHOW:
                 yield tableView.getSelectionModel().getSelectedItem();
         };

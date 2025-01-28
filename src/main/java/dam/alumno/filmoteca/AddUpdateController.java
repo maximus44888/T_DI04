@@ -33,12 +33,12 @@ public class AddUpdateController {
         final var films = FilmArchive.getInstance().films;
         switch (state.get()) {
             case ADD -> films.add(film.get());
-            case UPDATE -> films.filtered(p -> p.getId() == film.get().getId()).stream().findFirst().ifPresent(p -> {
-                p.setTitle(film.get().getTitle());
-                p.setYear(film.get().getYear());
-                p.setDescription(film.get().getDescription());
-                p.setRating(film.get().getRating());
-                p.setPoster(film.get().getPoster());
+            case UPDATE -> films.filtered(p -> p.id.get() == film.get().id.get()).stream().findFirst().ifPresent(p -> {
+                p.title.set(film.get().title.get());
+                p.year.set(film.get().year.get());
+                p.description.set(film.get().description.get());
+                p.rating.set(film.get().rating.get());
+                p.poster.set(film.get().poster.get());
             });
         }
         display.getScene().getWindow().hide();

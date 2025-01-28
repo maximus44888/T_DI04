@@ -81,21 +81,21 @@ public class FilmController {
             posterInput.textProperty().unbind();
 
             if (previous != null) {
-                IDInput.textProperty().unbindBidirectional(previous.idProperty().asString());
-                filmInput.textProperty().unbindBidirectional(previous.titleProperty());
-                yearInput.textProperty().unbindBidirectional(previous.yearProperty());
-                ratingInput.valueProperty().unbindBidirectional(previous.ratingProperty());
-                descriptionInput.textProperty().unbindBidirectional(previous.descriptionProperty());
-                posterInput.textProperty().unbindBidirectional(previous.posterProperty());
+                IDInput.textProperty().unbindBidirectional(previous.id.asString());
+                filmInput.textProperty().unbindBidirectional(previous.title);
+                yearInput.textProperty().unbindBidirectional(previous.year);
+                ratingInput.valueProperty().unbindBidirectional(previous.rating);
+                descriptionInput.textProperty().unbindBidirectional(previous.description);
+                posterInput.textProperty().unbindBidirectional(previous.poster);
             }
 
             if (next == null) {
                 next = new Film();
             }
 
-            IDInput.textProperty().bind(next.idProperty().asString());
-            filmInput.textProperty().bindBidirectional(next.titleProperty());
-            Bindings.bindBidirectional(yearInput.textProperty(), next.yearProperty(), new StringConverter<>() {
+            IDInput.textProperty().bind(next.id.asString());
+            filmInput.textProperty().bindBidirectional(next.title);
+            Bindings.bindBidirectional(yearInput.textProperty(), next.year, new StringConverter<>() {
                 @Override
                 public String toString(Number number) {
                     return number == null ? "" : Integer.toString((Integer) number);
@@ -119,9 +119,9 @@ public class FilmController {
 
                 }
             });
-            ratingInput.valueProperty().bindBidirectional(next.ratingProperty());
-            descriptionInput.textProperty().bindBidirectional(next.descriptionProperty());
-            posterInput.textProperty().bindBidirectional(next.posterProperty());
+            ratingInput.valueProperty().bindBidirectional(next.rating);
+            descriptionInput.textProperty().bindBidirectional(next.description);
+            posterInput.textProperty().bindBidirectional(next.poster);
         });
     }
 

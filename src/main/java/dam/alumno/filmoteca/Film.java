@@ -1,101 +1,54 @@
 package dam.alumno.filmoteca;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javafx.beans.property.*;
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Film {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty title = new SimpleStringProperty();
-    private final IntegerProperty year = new SimpleIntegerProperty();
-    private final StringProperty description = new SimpleStringProperty();
-    private final FloatProperty rating = new SimpleFloatProperty();
-    private final StringProperty poster = new SimpleStringProperty();
+    public final IntegerProperty id;
+    public final StringProperty title;
+    public final IntegerProperty year;
+    public final StringProperty description;
+    public final FloatProperty rating;
+    public final StringProperty poster;
 
+    public Film(final int id, final String title, final int year, final String description, final float rating, final String poster) {
+        this();
+        this.id.set(id);
+        this.title.set(title);
+        this.year.set(year);
+        this.description.set(description);
+        this.rating.set(rating);
+        this.poster.set(poster);
+    }
+
+    public Film(final int id) {
+        this();
+        this.id.set(id);
+    }
+
+    public Film(final Film film) {
+        this();
+        this.id.set(film.id.get());
+        this.title.set(film.title.get());
+        this.year.set(film.year.get());
+        this.description.set(film.description.get());
+        this.rating.set(film.rating.get());
+        this.poster.set(film.poster.get());
+    }
 
     public Film() {
-
-    }
-
-    public Film(int id, String title, int year, String description, float rating, String poster) {
-        this.id.set(id);
-        this.title.set(title);
-        this.year.set(year);
-        this.description.set(description);
-        this.rating.set(rating);
-        this.poster.set(poster);
-    }
-
-    public int getId() {
-        return id.get();
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public String getTitle() {
-        return title.get();
-    }
-
-    public StringProperty titleProperty() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title.set(title);
-    }
-
-    public int getYear() {
-        return year.get();
-    }
-
-    public IntegerProperty yearProperty() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year.set(year);
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public StringProperty descriptionProperty() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public float getRating() {
-        return rating.get();
-    }
-
-    public FloatProperty ratingProperty() {
-        return rating;
-    }
-
-    public void setRating(float rating) {
-        this.rating.set(rating);
-    }
-
-    public String getPoster() {
-        return poster.get();
-    }
-
-    public StringProperty posterProperty() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster.set(poster);
+        id = new SimpleIntegerProperty();
+        title = new SimpleStringProperty();
+        year = new SimpleIntegerProperty();
+        description = new SimpleStringProperty();
+        rating = new SimpleFloatProperty();
+        poster = new SimpleStringProperty();
     }
 
     @Override

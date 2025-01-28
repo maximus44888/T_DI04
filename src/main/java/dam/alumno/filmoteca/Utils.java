@@ -2,7 +2,7 @@ package dam.alumno.filmoteca;
 
 public final class Utils {
     public static String boxFilm(final Film film) {
-        final String title = "Película ID " + film.getId();
+        final String title = "Película ID " + film.id.get();
         final String tabTitle = "│ " + title + " │";
         final String tabTop = "┌" + "─".repeat(title.length() + 2) + "┐";
         final String content = """
@@ -11,7 +11,7 @@ public final class Utils {
                 Valoración: %.1f
                 Cartel: %s
                 Descripción: %s
-                """.formatted(film.getTitle(), film.getYear(), film.getRating(), film.getPoster(), film.getDescription());
+                """.formatted(film.title.get(), film.year.get(), film.rating.get(), film.poster.get(), film.description.get());
         final int maxLength = content.lines().mapToInt(String::length).max().orElse(0);
         final String contentTop = "├" + "─".repeat(maxLength + 2) + "┐";
         final String contentBottom = "└" + "─".repeat(maxLength + 2) + "┘";
