@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,8 +25,6 @@ public class MainController {
     private TableColumn<Film, Float> ratingColumn;
     @FXML
     private TableColumn<Film, String> posterColumn;
-    @FXML
-    private HBox filmView;
     @FXML
     private FilmController filmViewController;
 

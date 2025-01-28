@@ -4,7 +4,6 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class AddUpdateController {
@@ -13,8 +12,6 @@ public class AddUpdateController {
 
     @FXML
     private Text display;
-    @FXML
-    private HBox filmView;
     @FXML
     private FilmController filmViewController;
 
