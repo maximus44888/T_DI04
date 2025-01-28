@@ -29,7 +29,7 @@ public class MainApp extends Application {
         System.out.println("Cargando datos desde " + src);
 
         try {
-            System.out.println(FilmArchive.getInstance().loadFrom(src));
+            FilmArchive.getInstance().loadFrom(src).forEach(System.out::println);
         } catch (final IOException e) {
             System.out.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class MainApp extends Application {
         System.out.println("Guardando datos en " + dest);
 
         final var filmArchive = FilmArchive.getInstance();
-        System.out.println(filmArchive.films);
+        filmArchive.films.forEach(System.out::println);
 
         try {
             filmArchive.saveTo(dest);
