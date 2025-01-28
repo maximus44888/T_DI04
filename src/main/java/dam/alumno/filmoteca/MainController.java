@@ -49,12 +49,12 @@ public class MainController {
     }
 
     @FXML
-    private void onAddFilm(final ActionEvent actionEvent) throws IOException {
+    private void onAddFilm() throws IOException {
         showAddUpdateView(State.ADD);
     }
 
     @FXML
-    private void onUpdateFilm(final ActionEvent actionEvent) throws IOException {
+    private void onUpdateFilm() throws IOException {
         showAddUpdateView(State.UPDATE);
     }
 
@@ -80,12 +80,12 @@ public class MainController {
     }
 
     @FXML
-    private void onRemoveFilm(final ActionEvent actionEvent) {
+    private void onRemoveFilm() {
         tableView.getItems().remove(tableView.getSelectionModel().getSelectedItem());
     }
 
     @FXML
-    private void onClose(final ActionEvent actionEvent) {
+    private void onClose() {
         tableView.getScene().getWindow().hide();
     }
 }

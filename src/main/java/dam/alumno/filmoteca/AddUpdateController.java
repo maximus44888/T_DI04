@@ -29,7 +29,7 @@ public class AddUpdateController {
     }
 
     @FXML
-    private void onAccept(final ActionEvent actionEvent) {
+    private void onAccept() {
         final var films = FilmArchive.getInstance().films;
         switch (state.get()) {
             case ADD -> films.add(film.get());
@@ -45,7 +45,7 @@ public class AddUpdateController {
     }
 
     @FXML
-    private void onCancel(final ActionEvent actionEvent) {
+    private void onCancel() {
         display.getScene().getWindow().hide();
     }
 
