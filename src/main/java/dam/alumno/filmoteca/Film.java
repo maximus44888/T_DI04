@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javafx.beans.property.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Pelicula {
+public class Film {
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty title = new SimpleStringProperty();
     private final IntegerProperty year = new SimpleIntegerProperty();
@@ -13,11 +13,11 @@ public class Pelicula {
     private final StringProperty poster = new SimpleStringProperty();
 
 
-    public Pelicula() {
+    public Film() {
 
     }
 
-    public Pelicula(int id, String title, int year, String description, float rating, String poster) {
+    public Film(int id, String title, int year, String description, float rating, String poster) {
         this.id.set(id);
         this.title.set(title);
         this.year.set(year);
@@ -100,7 +100,7 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" +
+        return "Film{" +
                 "id=" + id +
                 ", title=" + title +
                 ", year=" + year +

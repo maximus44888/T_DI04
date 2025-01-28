@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 
 public class AddUpdateController {
 
-    private final ObjectProperty<Pelicula> film = new SimpleObjectProperty<>(new Pelicula());
+    private final ObjectProperty<Film> film = new SimpleObjectProperty<>(new Film());
     private final ObjectProperty<State> state = new SimpleObjectProperty<>(State.SHOW);
 
     @FXML
@@ -49,7 +49,7 @@ public class AddUpdateController {
         display.getScene().getWindow().hide();
     }
 
-    public ObjectProperty<Pelicula> filmProperty() {
+    public ObjectProperty<Film> filmProperty() {
         return film;
     }
 

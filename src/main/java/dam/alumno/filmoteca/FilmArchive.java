@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FilmArchive {
     private static FilmArchive instance;
-    public final ObservableList<Pelicula> films;
+    public final ObservableList<Film> films;
     private final ObjectMapper objectMapper;
 
     private FilmArchive() {
@@ -26,8 +26,8 @@ public class FilmArchive {
         return instance;
     }
 
-    public ObservableList<Pelicula> loadFrom(final File src) throws IOException {
-        films.setAll(objectMapper.readValue(src, new TypeReference<List<Pelicula>>() {}));
+    public ObservableList<Film> loadFrom(final File src) throws IOException {
+        films.setAll(objectMapper.readValue(src, new TypeReference<List<Film>>() {}));
         return films;
     }
 

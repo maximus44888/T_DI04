@@ -1,7 +1,7 @@
 package dam.alumno.filmoteca;
 
 public final class Utils {
-    public static String boxFilm(final Pelicula film) {
+    public static String boxFilm(final Film film) {
         final String title = "Película ID " + film.getId();
         final String tabTitle = "│ " + title + " │";
         final String tabTop = "┌" + "─".repeat(title.length() + 2) + "┐";

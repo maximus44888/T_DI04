@@ -14,19 +14,19 @@ import java.io.IOException;
 public class MainController {
 
     @FXML
-    private TableView<Pelicula> tableView;
+    private TableView<Film> tableView;
     @FXML
-    private TableColumn<Pelicula, Integer> IDColumn;
+    private TableColumn<Film, Integer> IDColumn;
     @FXML
-    private TableColumn<Pelicula, String> titleColumn;
+    private TableColumn<Film, String> titleColumn;
     @FXML
-    private TableColumn<Pelicula, Integer> yearColumn;
+    private TableColumn<Film, Integer> yearColumn;
     @FXML
-    private TableColumn<Pelicula, String> descriptionColumn;
+    private TableColumn<Film, String> descriptionColumn;
     @FXML
-    private TableColumn<Pelicula, Float> ratingColumn;
+    private TableColumn<Film, Float> ratingColumn;
     @FXML
-    private TableColumn<Pelicula, String> posterColumn;
+    private TableColumn<Film, String> posterColumn;
     @FXML
     private HBox filmView;
     @FXML
@@ -63,13 +63,13 @@ public class MainController {
         Scene scene = new Scene(fxmlLoader.load());
         final var controller = fxmlLoader.<AddUpdateController>getController();
         controller.stateProperty().set(state);
-        final Pelicula viewFilm = switch (state) {
+        final Film viewFilm = switch (state) {
             case ADD:
-                var nextId = tableView.getItems().stream().mapToInt(Pelicula::getId).max().orElse(0) + 1;
-                yield new Pelicula(nextId, "", 0, "", 0, "");
+                var nextId = tableView.getItems().stream().mapToInt(Film::getId).max().orElse(0) + 1;
+                yield new Film(nextId, "", 0, "", 0, "");
             case UPDATE:
                 var selectedFilm = tableView.getSelectionModel().getSelectedItem();
-                yield new Pelicula(selectedFilm.getId(), selectedFilm.getTitle(), selectedFilm.getYear(), selectedFilm.getDescription(), selectedFilm.getRating(), selectedFilm.getPoster());
+                yield new Film(selectedFilm.getId(), selectedFilm.getTitle(), selectedFilm.getYear(), selectedFilm.getDescription(), selectedFilm.getRating(), selectedFilm.getPoster());
             case SHOW:
                 yield tableView.getSelectionModel().getSelectedItem();
         };

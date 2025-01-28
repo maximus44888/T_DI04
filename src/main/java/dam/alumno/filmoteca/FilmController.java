@@ -18,7 +18,7 @@ import java.math.RoundingMode;
 
 public class FilmController {
 
-    private final ObjectProperty<Pelicula> film = new SimpleObjectProperty<>(new Pelicula());
+    private final ObjectProperty<Film> film = new SimpleObjectProperty<>(new Film());
     private final ObjectProperty<State> state = new SimpleObjectProperty<>(State.SHOW);
 
 
@@ -90,7 +90,7 @@ public class FilmController {
             }
 
             if (next == null) {
-                next = new Pelicula();
+                next = new Film();
             }
 
             IDInput.textProperty().bind(next.idProperty().asString());
@@ -125,7 +125,7 @@ public class FilmController {
         });
     }
 
-    public ObjectProperty<Pelicula> filmProperty() {
+    public ObjectProperty<Film> filmProperty() {
         return film;
     }
 
