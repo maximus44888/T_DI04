@@ -49,7 +49,7 @@ public class FilmController {
             }
         }, posterInput.textProperty()));
 
-        IDInput.setDisable(true);
+        IDInput.disableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
         IDInput.setEditable(false);
         filmInput.editableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
         yearInput.editableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
