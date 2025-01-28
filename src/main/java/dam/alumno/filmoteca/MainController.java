@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -82,7 +83,9 @@ public class MainController {
         final var stage = new Stage();
         stage.setTitle(state.value);
         stage.setScene(scene);
-        stage.show();
+        stage.initOwner(tableView.getScene().getWindow());
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.showAndWait();
     }
 
     @FXML
