@@ -1,6 +1,8 @@
 package dam.alumno.filmoteca;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
@@ -17,7 +19,13 @@ public class Film {
     public final FloatProperty rating;
     public final StringProperty poster;
 
-    public Film(final int id, final String title, final int year, final String description, final float rating, final String poster) {
+    @JsonCreator
+    public Film(@JsonProperty("id") final int id,
+                @JsonProperty("title") final String title,
+                @JsonProperty("year") final int year,
+                @JsonProperty("description") final String description,
+                @JsonProperty("rating") final float rating,
+                @JsonProperty("poster") final String poster) {
         this();
         this.id.set(id);
         this.title.set(title);
