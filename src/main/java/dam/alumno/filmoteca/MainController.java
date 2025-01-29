@@ -1,5 +1,7 @@
 package dam.alumno.filmoteca;
 
+import javafx.beans.binding.Bindings;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -35,10 +38,16 @@ public class MainController {
     public Button updateFilm;
     @FXML
     public Button removeFilm;
+    @FXML
+    public TextField searchInput;
 
     @FXML
     private void initialize() {
-        tableView.setItems(FilmArchive.getInstance().films);
+        final var filteredFilms = new FilteredList<>(FilmArchive.getInstance().films);
+        filteredFilms.predicateProperty().bind(Bindings.createObjectBinding(() -> (final Film film) ->
+                searchInput.getText().isBlank() || film.title.get().toLowerCase().contains(searchInput.getText().toLowerCase()), searchInput.textProperty()
+        ));
+        tableView.setItems(filteredFilms);
         IDColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, Integer> cellData) -> cellData.getValue().id.asObject());
         titleColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, String> cellData) -> cellData.getValue().title);
         yearColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, Integer> cellData) -> cellData.getValue().year.asObject());
@@ -72,7 +81,7 @@ public class MainController {
         controller.stateProperty().set(state);
         final var viewFilm = switch (state) {
             case ADD:
-                var nextId = tableView.getItems().stream().mapToInt(e -> e.id.get()).max().orElse(0) + 1;
+                var nextId = FilmArchive.getInstance().films.stream().mapToInt(e -> e.id.get()).max().orElse(0) + 1;
                 yield new Film(nextId);
             case UPDATE:
                 yield new Film(tableView.getSelectionModel().getSelectedItem());
@@ -93,7 +102,7 @@ public class MainController {
         showAlert(
                 Alert.AlertType.CONFIRMATION,
                 "¿Estás seguro de que quieres eliminar la película seleccionada?",
-                () -> tableView.getItems().remove(tableView.getSelectionModel().getSelectedItem())
+                () -> FilmArchive.getInstance().films.remove(tableView.getSelectionModel().getSelectedItem())
         );
     }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?><?import javafx.scene.control.TableColumn?><?import javafx.scene.control.TableView?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.Region?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?><?import javafx.scene.control.TableColumn?><?import javafx.scene.control.TableView?><?import javafx.scene.control.TextField?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.Region?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
 <HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="dam.alumno.filmoteca.MainController">
     <VBox>
+        <TextField fx:id="searchInput" promptText="Buscar..." />
         <TableView fx:id="tableView">
             <columns>
                 <TableColumn fx:id="IDColumn" text="ID" />
@@ -15,11 +16,11 @@
             </columns>
         </TableView>
         <HBox>
-            <Button mnemonicParsing="false" text="Crear película" onAction="#onAddFilm"/>
-            <Button fx:id="updateFilm" mnemonicParsing="false" text="Modificar película" onAction="#onUpdateFilm"/>
-            <Button fx:id="removeFilm" mnemonicParsing="false" text="Eliminar película" onAction="#onRemoveFilm"/>
+            <Button mnemonicParsing="false" text="Crear película" onAction="#onAddFilm" />
+            <Button fx:id="updateFilm" mnemonicParsing="false" text="Modificar película" onAction="#onUpdateFilm" />
+            <Button fx:id="removeFilm" mnemonicParsing="false" text="Eliminar película" onAction="#onRemoveFilm" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Cerrar aplicación" onAction="#onClose" cancelButton="true"/>
+            <Button mnemonicParsing="false" text="Cerrar aplicación" onAction="#onClose" cancelButton="true" />
         </HBox>
     </VBox>
     <VBox>
