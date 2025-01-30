@@ -1,6 +1,9 @@
 package dam.alumno.filmoteca;
 
+import javafx.scene.image.Image;
+
 public final class Utils {
+
     public static String boxFilm(final Film film) {
         final String title = "Película ID " + film.id.get();
         final String tabTitle = "│ " + title + " │";
@@ -21,5 +24,23 @@ public final class Utils {
         );
         sb.append(contentBottom);
         return sb.toString();
+    }
+
+    public static Image getNoImage(final String lang) {
+        return new Image(MainApp.class.getResource(
+                switch (lang) {
+                    case String s when s.equals("en") -> "No_image_available_en.png";
+                    default -> "No_image_available_es.png";
+                }
+        ).toString());
+    }
+
+    public static Image getDragAndDrop(final String lang) {
+        return new Image(MainApp.class.getResource(
+                switch (lang) {
+                    case String s when s.equals("en") -> "Drag_and_drop_en.png";
+                    default -> "Drag_and_drop_es.png";
+                }
+        ).toString());
     }
 }

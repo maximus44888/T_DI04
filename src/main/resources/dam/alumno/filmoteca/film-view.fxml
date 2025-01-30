@@ -19,7 +19,7 @@
         <TextArea fx:id="descriptionInput" editable="false" prefWidth="NaN" wrapText="true" VBox.vgrow="ALWAYS" />
     </VBox>
     <VBox>
-        <ImageView fx:id="posterOutput" fitHeight="325" fitWidth="216" />
+        <ImageView fx:id="posterOutput" fitHeight="325" fitWidth="216" onDragDropped="#onDragDropped" onDragOver="#onDragOver"/>
         <Label text="URL Poster" />
         <TextField fx:id="posterInput" editable="false" HBox.hgrow="ALWAYS" />
     </VBox>

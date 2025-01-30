@@ -11,11 +11,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.text.Text;
 import javafx.util.StringConverter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.MalformedURLException;
 
 public class FilmController {
     private final ObjectProperty<Film> film = new SimpleObjectProperty<>(new Film());
@@ -43,9 +46,12 @@ public class FilmController {
         ratingOutput.textProperty().bind(ratingInput.valueProperty().asString("%.1f"));
         posterOutput.imageProperty().bind(Bindings.createObjectBinding(() -> {
             try {
-                return new Image(posterInput.getText());
+                final var image = new Image(posterInput.getText());
+                if (image.isError()) throw new Exception();
+                return image;
             } catch (final Exception e) {
-                return null;
+                if (state.get() == State.SHOW) return Utils.getNoImage("es");
+                return Utils.getDragAndDrop("es");
             }
         }, posterInput.textProperty()));
 
@@ -118,6 +124,24 @@ public class FilmController {
             descriptionInput.textProperty().bindBidirectional(next.description);
             posterInput.textProperty().bindBidirectional(next.poster);
         });
+    }
+
+    @FXML
+    private void onDragDropped(final DragEvent dragEvent) throws MalformedURLException {
+        if (state.get() == State.SHOW) return;
+        final var dragboard = dragEvent.getDragboard();
+        if (dragboard.hasFiles()) {
+            posterInput.setText(dragboard.getFiles().getFirst().toURI().toURL().toString());
+        } else if (dragboard.hasImage()) {
+            posterInput.setText(dragboard.getImage().getUrl());
+        }
+    }
+
+    @FXML
+    private void onDragOver(final DragEvent dragEvent) {
+        if (state.get() == State.SHOW) return;
+        dragEvent.acceptTransferModes(TransferMode.LINK);
+        dragEvent.consume();
     }
 
     public ObjectProperty<Film> filmProperty() {
