@@ -11,6 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -48,12 +49,13 @@ public class MainController {
                 searchInput.getText().isBlank() || film.title.get().toLowerCase().contains(searchInput.getText().toLowerCase()), searchInput.textProperty()
         ));
         tableView.setItems(filteredFilms);
-        IDColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, Integer> cellData) -> cellData.getValue().id.asObject());
-        titleColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, String> cellData) -> cellData.getValue().title);
-        yearColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, Integer> cellData) -> cellData.getValue().year.asObject());
-        descriptionColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, String> cellData) -> cellData.getValue().description);
-        ratingColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, Float> cellData) -> cellData.getValue().rating.asObject());
-        posterColumn.setCellValueFactory((final TableColumn.CellDataFeatures<Film, String> cellData) -> cellData.getValue().poster);
+
+        IDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        posterColumn.setCellValueFactory(new PropertyValueFactory<>("poster"));
 
         filmViewController.filmProperty().bind(tableView.getSelectionModel().selectedItemProperty());
         if (!tableView.getItems().isEmpty()) {
