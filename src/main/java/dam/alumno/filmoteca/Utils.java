@@ -11,10 +11,12 @@ public final class Utils {
         final String content = """
                 Título: %s
                 Año: %d
+                Director: %s
+                Género: %s
                 Valoración: %.1f
                 Cartel: %s
                 Descripción: %s
-                """.formatted(film.title.get(), film.year.get(), film.rating.get(), film.poster.get(), film.description.get());
+                """.formatted(film.title.get(), film.year.get(), film.director.get(), film.genre.get().toString(), film.rating.get(), film.poster.get(), film.description.get());
         final int maxLength = content.lines().mapToInt(String::length).max().orElse(0);
         final String contentTop = "├" + "─".repeat(maxLength + 2) + "┐";
         final String contentBottom = "└" + "─".repeat(maxLength + 2) + "┘";
