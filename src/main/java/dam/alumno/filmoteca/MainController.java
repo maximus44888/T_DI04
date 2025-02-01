@@ -28,11 +28,11 @@ public class MainController {
     @FXML
     private TableColumn<Film, Integer> yearColumn;
     @FXML
-    private TableColumn<Film, String> descriptionColumn;
+    private TableColumn<Film, String> genreColumn;
     @FXML
     private TableColumn<Film, Float> ratingColumn;
     @FXML
-    private TableColumn<Film, String> posterColumn;
+    private TableColumn<Film, String> directorColumn;
     @FXML
     private FilmController filmViewController;
     @FXML
@@ -53,9 +53,9 @@ public class MainController {
         IDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        posterColumn.setCellValueFactory(new PropertyValueFactory<>("poster"));
+        directorColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
 
         filmViewController.filmProperty().bind(tableView.getSelectionModel().selectedItemProperty());
         if (!tableView.getItems().isEmpty()) {

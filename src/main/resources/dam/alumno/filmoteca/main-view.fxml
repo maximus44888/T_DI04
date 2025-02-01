@@ -11,8 +11,8 @@
                 <TableColumn fx:id="titleColumn" text="Título" />
                 <TableColumn fx:id="yearColumn" text="Año" />
                 <TableColumn fx:id="ratingColumn" text="Nota" />
-                <TableColumn fx:id="posterColumn" text="URL Poster" />
-                <TableColumn fx:id="descriptionColumn" text="Descripción" />
+                <TableColumn fx:id="directorColumn" text="Director" />
+                <TableColumn fx:id="genreColumn" text="Géneros" />
             </columns>
         </TableView>
         <HBox styleClass="spacing-padding">
