@@ -29,6 +29,8 @@ public class FilmController {
     @FXML
     private TextField filmInput;
     @FXML
+    private TextField directorInput;
+    @FXML
     private TextField yearInput;
     @FXML
     private Slider ratingInput;
@@ -58,6 +60,7 @@ public class FilmController {
         IDInput.disableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
         IDInput.setEditable(false);
         filmInput.editableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
+        directorInput.editableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
         yearInput.editableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
         ratingInput.disableProperty().bind(Bindings.createBooleanBinding(() -> state.get() == State.SHOW, state));
         descriptionInput.editableProperty().bind(Bindings.createBooleanBinding(() -> state.get() != State.SHOW, state));
@@ -80,6 +83,7 @@ public class FilmController {
         film.addListener((final ObservableValue<? extends Film> observable, final Film previous, Film next) -> {
             IDInput.textProperty().unbind();
             filmInput.textProperty().unbind();
+            directorInput.textProperty().unbind();
             yearInput.textProperty().unbind();
             ratingInput.valueProperty().unbind();
             descriptionInput.textProperty().unbind();
@@ -88,6 +92,7 @@ public class FilmController {
             if (previous != null) {
                 IDInput.textProperty().unbindBidirectional(previous.id.asString());
                 filmInput.textProperty().unbindBidirectional(previous.title);
+                directorInput.textProperty().unbindBidirectional(previous.director);
                 yearInput.textProperty().unbindBidirectional(previous.year);
                 ratingInput.valueProperty().unbindBidirectional(previous.rating);
                 descriptionInput.textProperty().unbindBidirectional(previous.description);
@@ -100,6 +105,7 @@ public class FilmController {
 
             IDInput.textProperty().bind(next.id.asString());
             filmInput.textProperty().bindBidirectional(next.title);
+            directorInput.textProperty().bindBidirectional(next.director);
             Bindings.bindBidirectional(yearInput.textProperty(), next.year, new StringConverter<>() {
                 @Override
                 public String toString(final Number number) {

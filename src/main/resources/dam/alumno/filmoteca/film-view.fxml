@@ -9,11 +9,13 @@
             <TextField fx:id="IDInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Película" GridPane.columnIndex="0" GridPane.rowIndex="1" />
             <TextField fx:id="filmInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Año" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField fx:id="yearInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Nota" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <Slider fx:id="ratingInput" max="10.0" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text fx:id="ratingOutput" styleClass="rating" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <Label text="Director" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="directorInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Año" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="yearInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Nota" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Slider fx:id="ratingInput" max="10.0" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text fx:id="ratingOutput" styleClass="rating" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
         </GridPane>
         <Label text="Descripción" />
         <TextArea fx:id="descriptionInput" editable="false" prefWidth="NaN" prefHeight="NaN" wrapText="true" VBox.vgrow="ALWAYS" />
