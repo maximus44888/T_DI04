@@ -9,8 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class MainApp extends Application {
-    private final File src = new File("datos/peliculas.json");
     private final File dest = new File("datos/peliculas2.json");
+    private final File src = dest;
 
     public static void main(final String[] args) {
         launch();
