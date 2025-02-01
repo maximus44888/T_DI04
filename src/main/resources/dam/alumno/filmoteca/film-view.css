@@ -1,0 +1,9 @@
+.rating {
+    -fx-fill: green;
+    -fx-font-size: 18;
+}
+
+.grid-pane {
+    -fx-hgap: 7;
+    -fx-vgap: 7;
+}

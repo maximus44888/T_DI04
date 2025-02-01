@@ -1,0 +1,40 @@
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: darkorange;
+}
+
+.table-view .column-header,
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-border-color: transparent rgba(255, 140, 0, 0.75) rgba(255, 140, 0, 0.75) rgba(255, 140, 0, 0.75);
+}
+
+.table-view .column-header .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+}
+
+.table-row-cell:selected,
+.table-row-cell:selected:focused {
+    -fx-background-color: darkorange;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}

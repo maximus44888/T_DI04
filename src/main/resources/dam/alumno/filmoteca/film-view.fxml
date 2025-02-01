@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.Label?><?import javafx.scene.control.Slider?><?import javafx.scene.control.TextArea?><?import javafx.scene.control.TextField?><?import javafx.scene.image.ImageView?><?import javafx.scene.layout.GridPane?><?import javafx.scene.layout.HBox?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
 <HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="dam.alumno.filmoteca.FilmController">
-    <VBox alignment="CENTER_LEFT">
-        <GridPane>
+    fx:controller="dam.alumno.filmoteca.FilmController" stylesheets="@style.css, @film-view.css">
+    <VBox alignment="CENTER_LEFT" styleClass="spacing-padding">
+        <GridPane styleClass="grid-pane">
             <Label text="ID" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <TextField fx:id="IDInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Película" GridPane.columnIndex="0" GridPane.rowIndex="1" />
@@ -13,12 +13,12 @@
             <TextField fx:id="yearInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Nota" GridPane.columnIndex="0" GridPane.rowIndex="3" />
             <Slider fx:id="ratingInput" max="10.0" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text fx:id="ratingOutput" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <Text fx:id="ratingOutput" styleClass="rating" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
         </GridPane>
         <Label text="Descripción" />
-        <TextArea fx:id="descriptionInput" editable="false" prefWidth="NaN" wrapText="true" VBox.vgrow="ALWAYS" />
+        <TextArea fx:id="descriptionInput" editable="false" prefWidth="NaN" prefHeight="NaN" wrapText="true" VBox.vgrow="ALWAYS" />
     </VBox>
-    <VBox>
+    <VBox styleClass="spacing-padding">
         <ImageView fx:id="posterOutput" fitHeight="325" fitWidth="216" onDragDropped="#onDragDropped" onDragOver="#onDragOver"/>
         <Label text="URL Poster" />
         <TextField fx:id="posterInput" editable="false" HBox.hgrow="ALWAYS" />
